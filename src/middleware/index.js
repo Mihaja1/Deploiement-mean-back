@@ -37,7 +37,7 @@ class Middleware {
     ) {
       try {
         console.log("url called " + req.originalUrl + " " + req.method);
-        Middleware.checkToken(req, req.headers.authorization);
+        new Middleware().checkToken(req, req.headers.token);
         next();
       } catch (error) {
         console.log(error);
