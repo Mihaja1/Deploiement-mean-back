@@ -3,13 +3,13 @@ const { Secret, sign, verify } = require("jsonwebtoken");
 const secret_code = "banane";
 
 class Middleware {
-    async checkToken(req, token) {
+    async checkToken(req, token, res) {
       if (req.originalUrl !== "/login" &&
         req.originalUrl !== "/registration" && 
         req.originalUrl !== "/login.employe")
       {
           if (!token) {
-              throw new Error("Session expired");
+              res.status(401).json({ message: "Session expired" });
           } else {
               try {
                 const check = verify(token, secret_code);
@@ -37,7 +37,7 @@ class Middleware {
     ) {
       try {
         console.log("url called " + req.originalUrl + " " + req.method);
-        new Middleware().checkToken(req, req.headers.token);
+        new Middleware().checkToken(req, req.headers.token, res);
         next();
       } catch (error) {
         console.log(error);
