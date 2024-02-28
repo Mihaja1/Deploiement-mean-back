@@ -107,10 +107,10 @@ async function planiferRappels() {
 planiferRappels();
 
 function maFonction() {
-    console.log('Cette fonction s\'exécute toutes les 5 minutes.');
+    console.log('Cette fonction s\'exécute toutes les 2 minutes.');
 }
 
-const intervalID = setInterval(maFonction, 300000);
+const intervalID = setInterval(maFonction, 120000);
 
 // // Pour arrêter l'exécution de setInterval après un certain temps
 // setTimeout(() => {
