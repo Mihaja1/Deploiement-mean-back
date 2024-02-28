@@ -13,7 +13,6 @@ const middleware = new Middleware();
 app.use(cors());
 app.use(bodyParser.raw({ type: "application/octet-stream" }));
 app.use("/api", middleware.checking, routes);
-app.use(errorHandler); // Error handler middleware
 app.get("/", (req, res) => {
     res.send("Hello World");
 });
