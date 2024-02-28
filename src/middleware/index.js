@@ -39,8 +39,9 @@ class Middleware {
         console.log("url called " + req.originalUrl + " " + req.method);
         new Middleware().checkToken(req, req.headers.token);
         next();
+
       } catch (error) {
-        res.status(401).json({ message: error.message });
+        next(error);
       }
     } else {
       console.log("mbola m next " + req.originalUrl);
